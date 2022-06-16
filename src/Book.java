@@ -1,5 +1,5 @@
 public class Book {
-    Author author;
+   private Author author;
     private int year;
     private final String title;
 
@@ -12,7 +12,6 @@ public class Book {
     public int getYear() {
         return year;
     }
-
     public String getTitle() {
         return title;
     }
@@ -21,4 +20,19 @@ public class Book {
         this.year = year;
     }
 
+    public String toString() {
+        return "Автор: " + this.author + ", Название: " + this.title + ", Год издания: " + this.year;
+    }
+
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book =(Book) o;
+        return title.equals(book.title);
+    }
+public int hashCode() {
+        int titleBook = title == null ? 0 : title.hashCode();
+        titleBook = 31 * titleBook + year;
+        return titleBook;
+    }
 }
